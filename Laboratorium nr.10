@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+ <style>
+	body 
+	{
+		margin: 0;
+	}
+
+	canvas 
+	{
+    width: 100%;
+    height: 100%;
+	}
+</style> 
+<script src="build/three.js"></script>three.js/build/three.js
+</head>
+<body>
+<script>
+let canvas = document.getElementById("glcanvas");
+
+const scene = new THREE.Scene({color: 0xfff});
+
+const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
+
+const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
+const light = new THREE.PointLight( 0xffffff, 1, 300 );
+light.position.set(-7, -7, 10);
+camera.add(light);
+scene.add(camera);
+
+const material = new THREE.MeshPhongMaterial(
+    {
+        color: 0xffffff, 
+    });
+
+let white_queen = new THREE.Group();
+
+const baseGeometry = new THREE.CylinderGeometry(0.4, 0.4, 0.1,100);
+
+const base = new THREE.Mesh(baseGeometry, material);
+white_queen.add(base);
+base.position.y = 0.2;
+
+const queenGeometry_1 = new THREE.CylinderGeometry(0.8,0.8, 0.1, 100);
+const queenPart_1 = new THREE.Mesh(queenGeometry_1, material);
+queenPart_1.position.y=0.3;
+white_queen.add(queenPart_1);
+
+const queenGeometry_2 = new THREE.CylinderGeometry(0.45, 0.7, 0.8, 100);
+const queenPart_2 = new THREE.Mesh(queenGeometry_2, material);
+queenPart_2.position.y=0.75; 	
+white_queen.add(queenPart_2);
+
+const queenGeometry_3 = new THREE.CylinderGeometry(0.55, 0.55, 0.3, 100);
+const queenPart_3 = new THREE.Mesh(queenGeometry_3, material);
+queenPart_3.position.y=1.29; 
+white_queen.add(queenPart_3);
+
+const queenGeometry_4 = new THREE.CylinderGeometry(0.5, 0.5, 0.7, 100);
+const queenPart_4 = new THREE.Mesh(queenGeometry_4, material); 
+queenPart_4.position.y=1.79;
+white_queen.add(queenPart_4);
+
+const queenGeometry_5 = new THREE.CylinderGeometry(0.5, 0.75, 0.1, 100);
+const queenPart_5 = new THREE.Mesh(queenGeometry_5, material);
+queenPart_5.position.y=2.1;
+white_queen.add(queenPart_5); 
+
+const queenGeometry_6= new THREE.CylinderGeometry(0.5, 0.8, 0.2, 100);
+const queenPart_6 = new THREE.Mesh(queenGeometry_6, material); 
+white_queen.add(queenPart_6);
+queenPart_6.position.y=2.25;	
+
+const queenGeometry_7= new THREE.CylinderGeometry(0.9, 0.5, 0.6, 100);
+const queenPart_7 = new THREE.Mesh(queenGeometry_7, material); 
+white_queen.add(queenPart_7);
+queenPart_7.position.y=2.50;	
+white_queen.position.set(0,-3,1);
+
+
+
+const queenGeometry_8= new THREE.CylinderGeometry(0.6, 0.9, 0.3, 100);
+const queenPart_8 = new THREE.Mesh(queenGeometry_8, material); 
+white_queen.add(queenPart_8);
+queenPart_8.position.y=2.95;	
+white_queen.position.set(0,-3,1);
+
+const queenGeometry_9= new THREE.CylinderGeometry(0.2, 0.2, 0.3, 100);
+const queenPart_9 = new THREE.Mesh(queenGeometry_9, material); 
+white_queen.add(queenPart_9);
+queenPart_9.position.y=3.2;	
+white_queen.position.set(0,-3,1);
+
+scene.add(white_queen);
+renderer.render(scene, camera);
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+camera.position.z = 4.5;
+
+animate();
+
+</script>
+</body>
+</html>
